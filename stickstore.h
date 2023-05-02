@@ -130,6 +130,3 @@ void stickStore(){
   system("CLS");
   
 }
-int main() {
-  stickStore();
-}
