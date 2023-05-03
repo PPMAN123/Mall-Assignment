@@ -81,32 +81,32 @@ void stickStore(){
   cout << "*********************************** " << endl;
   if (hockeyCount > 0){
     cout << "Child Hockey Stick 1357" << endl;
-    cout << setw(3) << hockeyCount << " @ $99.99 " << double(hockeyCount * 99.99) << endl;
+    cout << setw(3) << hockeyCount << " @ $99.99 " << setw(22)<< double(hockeyCount * 99.99) << endl;
   }
   if (baseballCount > 0){
     cout << "Child Baseball Bat 2468" << endl;
-    cout << setw(3) << baseballCount << " @ $69.99 " << double(baseballCount * 69.99) << endl;
+    cout << setw(3) << baseballCount << " @ $69.99 " << setw(22) << double(baseballCount * 69.99) << endl;
   }
   if (badmintonCount > 0){
     cout << "Child Badminton Racket 12345" << endl;
-    cout << setw(3) << badmintonCount << " @ $50.00 " << double(badmintonCount * 50.00) << endl;
+    cout << setw(3) << badmintonCount << " @ $50.00 " << setw(22) << double(badmintonCount * 50.00) << endl;
   }
   if (lacrosseCount > 0){
     cout << "Child Lacrosse Stick 67890" << endl;
-    cout << setw(3) << lacrosseCount << " @ $54.99 " << double(lacrosseCount * 54.99) << endl;
+    cout << setw(3) << lacrosseCount << " @ $54.99 " << setw(22) << double(lacrosseCount * 54.99) << endl;
   }
   if (cricketCount > 0){
     cout << "Child Cricket Bat 54321" << endl;
-    cout << setw(3) << cricketCount << " @ $79.99 " << double(cricketCount * 79.99) << endl;
+    cout << setw(3) << cricketCount << " @ $79.99 " << setw(22) << double(cricketCount * 79.99) << endl;
   }
 
   sumOfPrice = (hockeyCount * 99.99) + (baseballCount * 69.99) + (badmintonCount * 50.00) + (lacrosseCount * 54.99) + (cricketCount * 79.99); 
 
-  cout << "Subtotal " << sumOfPrice << endl;
-  cout << "Tax " << fixed << setprecision(2) <<  sumOfPrice * 0.13 << endl;
+  cout << "Subtotal " << setw(26) << sumOfPrice << endl;
+  cout << "Tax " << fixed << setprecision(2) << setw(31) <<  sumOfPrice * 0.13 << endl;
 
   totalWTax = sumOfPrice * 1.13;
-  cout << fixed <<setprecision(2) << "Total " << totalWTax << endl;
+  cout << fixed <<setprecision(2) << "Total " << setw(29) <<  totalWTax << endl;
   cout << "*********************************** " << endl;
 
   cout << endl; 
