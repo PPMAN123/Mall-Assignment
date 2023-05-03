@@ -31,8 +31,8 @@ void buyBall(
   /**
     * @brief: Adds one to the number of products bought based off of the barcode number
     * @params: barcodeNumber - barcode number of product that is bought
-    * @params: ballsBought - unordered map that maps the product name to the number of it bought
-    * @params: ballsBarcodes - unordered map that maps the barcode to the product name
+    * @params: ballsBought - unordered map that maps product name to the amount of it bought passed by reference
+    * @param: ballsBarcodes - the unordered map of barcodes that map to the product name passed by reference
   */
   ballsBought[ballsBarcodes[barcodeNumber]] += 1;
 }
@@ -42,9 +42,12 @@ bool containsProduct(
   unordered_map<int, string> &ballsBarcodes
 ){
   /**
-   * @brief: 
-   * 
+   * @brief: Checks if an item exists within the catalogue
+   * @param: barcode - an integer barcode to check if it exists in the catalogue
+   * @param: ballsBarcodes - the unordered map of barcodes that map to the product name passed by reference
+   * @return: a boolean that returns if the barcode exists within the keys of ballsBarcodes
    */
+  //Using some unordered map utilities
   auto pointer = ballsBarcodes.find(barcode);
   return pointer == ballsBarcodes.end();
 }
@@ -54,14 +57,17 @@ void printCart(
   unordered_map<string, int> &ballsBought
 ){
   /**
-   * @brief: 
-   * 
+   * @brief: Prints out the current cart of the user 
+   * @param: ballsBarcodes - the unordered map of barcodes that map to the product name passed by reference
+   * @params: ballsBought - unordered map that maps the product name to the number of it bought
    */
+
   cout << "\n*** YOUR CART ***" << endl;
-  for (const auto &pair : ballsCatalogue)
-  {
-    if (ballsBought[pair.first] > 0)
-    {
+
+  for (const auto &pair : ballsCatalogue){
+    //loops through the ballsCatalogue variable
+    if (ballsBought[pair.first] > 0){
+      //Checks if the product has been bought, then prints out the information about whatever product that has been added to cart
       cout << pair.first;
       cout << setw(36 - pair.first.length()) << "x " << ballsBought[pair.first] << " @ $" << pair.second << " each" << endl;
     }
@@ -73,11 +79,18 @@ void printReceipt(
   unordered_map<string, float> &ballsCatalogue,
   unordered_map<string, int> &barcodeMap
 ){
+  /**
+   * @brief: 
+   * @params: ballsBought - unordered map that maps product name to the amount of it bought passed by reference
+   * @params: ballsCatalogue - Takes in an unordered map of the catalogue with product names and prices by reference
+   * @params: barcodeMap - a reverse of the ballsBarcode variable, to map a product name to a barcode, as I realized that the logic I intended to use does not translate to C++ very well. (I wanted to do a logic that works well with JSON)
+  */
+
   cout << "\n*** RECEIPT ***\nBALLS" << endl;
   cout << "************************************" << endl;
+
   float subTotal = 0;
-  for (const auto &pair : ballsCatalogue)
-  {
+  for (const auto &pair : ballsCatalogue){
     if (ballsBought[pair.first] > 0)
     {
       float productTotal = ballsBought[pair.first] * pair.second;
@@ -89,7 +102,7 @@ void printReceipt(
       cout << setw(36 - 13 - to_string(ballsBought[pair.first]).length()) << setprecision(2) << right << fixed << productTotal << endl;
       subTotal += productTotal;
     }
-}
+  }
 
   cout << "Subtotal";
   cout << setw(36 - 8) << fixed << setprecision(2) << subTotal << endl;
@@ -119,64 +132,42 @@ void printReceipt(
 
 void ballsStore(){
   char shopAgain;
-  unordered_map<string, float> ballsCatalogue{
-      {"Basketball (pairs)", 49.99},
-      {"Volleyball (pairs)", 29.99},
-      {"Tennis balls (pairs)", 26.99},
-      {"Golf balls (pairs)", 24.99},
-      {"Soccer ball (pairs)", 34.99}};
+  unordered_map<string, float> ballsCatalogue;
+  unordered_map<int, string> ballsBarcodes;
+  unordered_map<string, int> barcodeMap;
+  unordered_map<string, int> ballsBought;
 
-  unordered_map<int, string> ballsBarcodes{
-      {1, "Basketball (pairs)"},
-      {2, "Volleyball (pairs)"},
-      {3, "Tennis balls (pairs)"},
-      {4, "Golf balls (pairs)"},
-      {5, "Soccer ball (pairs)"}};
-
-  unordered_map<string, int> barcodeMap{
-      {"Basketball (pairs)", 1},
-      {"Volleyball (pairs)", 2},
-      {"Tennis balls (pairs)", 3},
-      {"Golf balls (pairs)", 4},
-      {"Soccer ball (pairs)", 5}};
-
-  unordered_map<string, int> ballsBought{
-      {"Basketball (pairs)", 0},
-      {"Volleyball (pairs)", 0},
-      {"Tennis balls (pairs)", 0},
-      {"Golf balls (pairs)", 0},
-      {"Soccer ball (pairs)", 0}};
   do{
     ballsCatalogue = {
-      {"Basketball (pairs)", 49.99},
-      {"Volleyball (pairs)", 29.99},
-      {"Tennis balls (pairs)", 26.99},
-      {"Golf balls (pairs)", 24.99},
-      {"Soccer ball (pairs)", 34.99}
+      {"Basketball (pair)", 71.98},
+      {"Volleyball (pair)", 59.98},
+      {"Tennis balls 3x (pair)", 15.98},
+      {"Golf balls 12x (pair)", 49.98},
+      {"Soccer ball (pair)", 89.98}
     };
 
-      ballsBarcodes = {
-        {1, "Basketball (pairs)"},
-        {2, "Volleyball (pairs)"},
-        {3, "Tennis balls (pairs)"},
-        {4, "Golf balls (pairs)"},
-        {5, "Soccer ball (pairs)"}
-      };
+    ballsBarcodes = {
+      {1, "Basketball (pair)"},
+      {2, "Volleyball (pair)"},
+      {3, "Tennis balls 3x (pair)"},
+      {4, "Golf balls 12x (pair)"},
+      {5, "Soccer ball (pair)"}
+    };
 
     barcodeMap = {
-        {"Basketball (pairs)", 1},
-        {"Volleyball (pairs)", 2},
-        {"Tennis balls (pairs)", 3},
-        {"Golf balls (pairs)", 4},
-        {"Soccer ball (pairs)", 5}
+      {"Basketball (pair)", 1},
+      {"Volleyball (pair)", 2},
+      {"Tennis balls 3x (pair)", 3},
+      {"Golf balls 12x (pair)", 4},
+      {"Soccer ball (pair)", 5}
     };
 
     ballsBought = {
-        {"Basketball (pairs)", 0},
-        {"Volleyball (pairs)", 0},
-        {"Tennis balls (pairs)", 0},
-        {"Golf balls (pairs)", 0},
-        {"Soccer ball (pairs)", 0}
+      {"Basketball (pair)", 0},
+      {"Volleyball (pair)", 0},
+      {"Tennis balls 3x (pair)", 0},
+      {"Golf balls 12x (pair)", 0},
+      {"Soccer ball (pair)", 0}
     };
 
     cout << "***\nWelcome to Ethan's Balls\n" << endl;
