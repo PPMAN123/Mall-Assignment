@@ -13,6 +13,7 @@
 #include <iomanip>
 #include <cctype>
 #include <cmath>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -217,4 +218,10 @@ void ballsStore(){
   } while (tolower(shopAgain) != 'c');
 
   printReceipt(ballsBought, ballsCatalogue, barcodeMap);
+
+  char keyToLeaveStore;
+  cout << "\nPress any key to leave the store:";
+  cin >> keyToLeaveStore;
+
+  system("CLS");
 }
