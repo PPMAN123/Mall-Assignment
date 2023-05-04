@@ -8,7 +8,7 @@
 */
 
 #include <iostream>
-#include <std.lib>
+#include <stdlib.h>
 #include "Balls.h"
 #include "Stickstore.h"
 
@@ -62,7 +62,6 @@ int main(){
       directoryOut();
       inMall = false;
     }
-      
     }
   }
 }

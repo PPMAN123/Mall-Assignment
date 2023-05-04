@@ -1,6 +1,6 @@
 /**
- * @file Balls.h
- * @author Ethan Zhou
+ * @file: Balls.h
+ * @author: Ethan Zhou
  * @for: Ms.Wun
  * @class: ICS3U1
  * @brief: Header file for the logic of the shop "Ethan's Balls"
@@ -220,8 +220,8 @@ void ballsStore(){
   printReceipt(ballsBought, ballsCatalogue, barcodeMap);
 
   char keyToLeaveStore;
-  cout << "\nPress any key to leave the store:";
+  cout << "\nPress any key to leave the store: ";
   cin >> keyToLeaveStore;
 
-  system("CLS");
+  system("clear");
 }
