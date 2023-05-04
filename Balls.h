@@ -223,5 +223,8 @@ void ballsStore(){
   cout << "\nPress any key to leave the store: ";
   cin >> keyToLeaveStore;
 
-  system("clear");
+  int systemRet = system("clear");
+  if (systemRet == -1) {
+    cout << "There is an error with system" << endl;
+  }
 }
