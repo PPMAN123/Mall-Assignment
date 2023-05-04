@@ -1,3 +1,11 @@
+/**
+ * @file Balls.h
+ * @author Ethan Zhou
+ * @for: Ms.Wun
+ * @brief: Header file for the logic of the shop "Ethan's Balls"
+ * @date: 2023-05-04
+*/
+
 #include <iostream>
 #include <unordered_map>
 #include <string>
@@ -91,8 +99,11 @@ void printReceipt(
 
   float subTotal = 0;
   for (const auto &pair : ballsCatalogue){
-    if (ballsBought[pair.first] > 0)
-    {
+    //looping through ballsCatalogue
+    if (ballsBought[pair.first] > 0){
+      //Checking if the current product has been bought
+
+      //Variable to keep track of the product total cost
       float productTotal = ballsBought[pair.first] * pair.second;
 
       cout << pair.first << "  " << barcodeMap[pair.first] << endl;
@@ -116,8 +127,8 @@ void printReceipt(
   cout << setw(36 - 5) << setprecision(2) << subTotal * 1.13 << endl;
 
   float payment;
-  do
-  {
+  do{
+    //error trapped loop to get the payment
     cout << "\nPlease enter payment amount: ";
     cin >> payment;
     if (payment < subTotal * 1.13){
@@ -126,42 +137,51 @@ void printReceipt(
   } while (payment < subTotal * 1.13);
 
   if (payment > subTotal * 1.13){
+    //If the user gets change back
     cout << "\nYour change is $" << setprecision(2) << fixed << payment-subTotal * 1.13 << ".\n" << endl;
   }
+  
+  cout << "\nThank you for shopping at Ethan's Balls!\n" << endl;
 }
 
 void ballsStore(){
-  char shopAgain;
-  unordered_map<string, float> ballsCatalogue;
-  unordered_map<int, string> ballsBarcodes;
-  unordered_map<string, int> barcodeMap;
-  unordered_map<string, int> ballsBought;
+  /**
+   * @brief: The main method for the store, that organizes all the logic together
+   */
 
-  do{
-    ballsCatalogue = {
+  char shopAgain;
+
+  //Initializing the unordered maps
+  unordered_map<string, float> ballsCatalogue{
       {"Basketball (pair)", 71.98},
       {"Volleyball (pair)", 59.98},
       {"Tennis balls 3x (pair)", 15.98},
       {"Golf balls 12x (pair)", 49.98},
       {"Soccer ball (pair)", 89.98}
-    };
+  };
 
-    ballsBarcodes = {
+  unordered_map<int, string> ballsBarcodes{
       {1, "Basketball (pair)"},
       {2, "Volleyball (pair)"},
       {3, "Tennis balls 3x (pair)"},
       {4, "Golf balls 12x (pair)"},
       {5, "Soccer ball (pair)"}
-    };
+  };
 
-    barcodeMap = {
+  unordered_map<string, int> barcodeMap{
       {"Basketball (pair)", 1},
       {"Volleyball (pair)", 2},
       {"Tennis balls 3x (pair)", 3},
       {"Golf balls 12x (pair)", 4},
       {"Soccer ball (pair)", 5}
-    };
+  };
 
+  unordered_map<string, int> ballsBought;
+
+  do{
+    //Do-while loop for when user wants to restart shopping
+
+    //Inserting the values of balls bought within the loop in case when the user wants to shop again, so the values can get resetted
     ballsBought = {
       {"Basketball (pair)", 0},
       {"Volleyball (pair)", 0},
@@ -174,17 +194,16 @@ void ballsStore(){
     printBallsCatalogue(ballsCatalogue);
 
     int barcodeInput;
-    do
-    {
+    do{
+      //loop to get scans from the user
       cout << "Scan to purchase (Type 0 to stop): ";
       cin >> barcodeInput;
       
-      if (containsProduct(barcodeInput, ballsBarcodes) && barcodeInput != 0)
-      {
+      if (containsProduct(barcodeInput, ballsBarcodes) && barcodeInput != 0){
+        //If the barcode is wrong
         cout << "\nERROR: That is an invalid item barcode. Please try again.\n" << endl;
-      }
-      else
-      {
+      } else {
+        //If barcode is correct, buy a ball
         buyBall(barcodeInput, ballsBought, ballsBarcodes);
       }
     } while (barcodeInput != 0);
