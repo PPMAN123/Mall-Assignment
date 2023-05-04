@@ -1,4 +1,4 @@
-run = "c++ ToddlerMallerMallA4Code.cpp"
+run = "g++ ToddlerMallerMallA4Code.cpp -o main && ./main"
 
 [nix]
 channel = "stable-22_11"

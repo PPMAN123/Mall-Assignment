@@ -1,5 +1,9 @@
 //Oscar Ma
-//Store for
+//Stick Store
+//Ms. Wun
+//2023-05-04
+
+//include header files
 #include <iostream>
 #include <cmath>
 #include <iomanip>
@@ -7,29 +11,40 @@
 
 using namespace std;
 
+//function for the store
 void stickStore(){
+
+  //barcodes for the items
   int hockeyCode = 1357;
   int baseballCode = 2468;
   int badmintonCode = 12345;
   int lacrosseCode = 67890;
   int cricketCode = 54321;
 
+  //variables to count for the items 
   int hockeyCount = 0;
   int baseballCount = 0;
   int badmintonCount = 0;
   int lacrosseCount = 0;
   int cricketCount = 0;
 
+  //variable for the payment
   double stickPayment = 0;
 
+  //variables for subtotal and total
   double sumOfPrice = 0;
   double totalWTax = 0;
 
+  //variable to exit the store
   char stickExit;
+  //variable to confirm receipt
   char stickConfirm;
+  //variable for which stick to buy
   int stickChoice;
+  //variable to stay in the loop
   int stickSentinel = 1;
-  
+
+  //output the store menu
   cout << "***"<< endl;
   cout << "WELCOME TO OSCARS STICK STORE!"<< endl;
   cout << endl; 
@@ -38,13 +53,15 @@ void stickStore(){
   cout << "> Kids Badminton Racket $50.00" << endl;
   cout << "> Kids Lacrosse Stick   $54.99" << endl;
   cout << "> Kids Cricket Bat      $79.99" << endl;
-
+  
   cout << "\nPlease scan the barcode on the paper catalogue to purchase an item" << endl;
 
+  //loop to get a valid user input for stick choice
   while (stickSentinel != 0){
     cout << "Scan to Purchase (type 0 to stop): "; 
     cin >> stickChoice;
 
+    //output the items that the user bought if they enter 0
     if (stickChoice == 0){
       cout << endl;
       cout << "\n*** YOUR CART*** " << endl;
@@ -53,15 +70,17 @@ void stickStore(){
       cout << "Badminton Rackets x " << badmintonCount << " @ $50.00 each" << endl;
       cout << "Lacrosse Sticks x " << lacrosseCount << " @ $54.99 each" << endl;
       cout << "Cricket Bats x " << cricketCount << " @ $79.99 each" << endl;
-
+  // ask the user if they want to continue
       cout << "Type C to confirm or anything else to restart: ";
       cin >> stickConfirm;
-
+    //if the user enters c then exit the loop
       if (stickConfirm == 'C' or stickConfirm == 'c'){
         stickSentinel = 0;
       } else{
+        //if they dont enter c then go back to ask the user for input
         stickSentinel = 1;
       }
+      // if they enter a barcode number then add the item to the corresponding count
     } else if (stickChoice == hockeyCode){
       hockeyCount += 1;
     } else if (stickChoice == baseballCode){
@@ -78,9 +97,11 @@ void stickStore(){
     
   }
   cout << endl;
+  //output the receipt
   cout << "\n*** RECEIPT*** " << endl;
   cout << "OSCARS STICK STORE" << endl;
   cout << "*********************************** " << endl;
+  //only display items the user bought
   if (hockeyCount > 0){
     cout << "Child Hockey Stick 1357" << endl;
     cout << setw(3) << hockeyCount << " @ $99.99 " << setw(22)<< double(hockeyCount * 99.99) << endl;
@@ -101,12 +122,13 @@ void stickStore(){
     cout << "Child Cricket Bat 54321" << endl;
     cout << setw(3) << cricketCount << " @ $79.99 " << setw(22) << double(cricketCount * 79.99) << endl;
   }
-
+//calculate the subtotal
   sumOfPrice = (hockeyCount * 99.99) + (baseballCount * 69.99) + (badmintonCount * 50.00) + (lacrosseCount * 54.99) + (cricketCount * 79.99); 
-
+//display the subtotal
   cout << "Subtotal " << setw(26) << sumOfPrice << endl;
+//calculate the tax, and display
   cout << "Tax " << fixed << setprecision(2) << setw(31) <<  sumOfPrice * 0.13 << endl;
-
+//calculat the total
   totalWTax = sumOfPrice * 1.13;
   cout << fixed <<setprecision(2) << "Total " << setw(29) <<  totalWTax << endl;
   cout << "*********************************** " << endl;
@@ -129,6 +151,6 @@ void stickStore(){
   cout << "Enter any key to exit the store";
   cin >> stickExit;
 
-  
+  system("CLS");
   
 }

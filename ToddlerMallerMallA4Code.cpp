@@ -8,10 +8,9 @@
 */
 
 #include <iostream>
+#include <std.lib>
 #include "Balls.h"
 #include "Stickstore.h"
-#include "Stickstore.h"
-
 
 using namespace std;
 
@@ -27,7 +26,7 @@ void directoryOut(){
 int main(){
   bool inMall = true;
   int storeChoice = 0;
-  while (inMall == true){
+  while (inMall){
     cout << "Welcome to the Toddler Maller Mall!" << endl;
     cout << "\nDirectory: " << endl;
     cout << "1) Ethans Ball Store" << endl;
@@ -66,5 +65,4 @@ int main(){
       
     }
   }
-  
 }
