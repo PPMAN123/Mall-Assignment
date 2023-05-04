@@ -128,29 +128,29 @@ void stickStore(){
   cout << "Subtotal " << setw(26) << fixed << setprecision(2) <<  sumOfPrice << endl;
 //calculate the tax, and display
   cout << "Tax " << fixed << setprecision(2) << setw(31) <<  sumOfPrice * 0.13 << endl;
-//calculat the total
+//calculate the total
   totalWTax = sumOfPrice * 1.13;
   cout << fixed <<setprecision(2) << "Total " << setw(29) <<  totalWTax << endl;
   cout << "*********************************** " << endl;
 
   cout << endl; 
-
+//enter payment
   while (stickPayment < totalWTax){
     cout << "Enter your payment: ";
     cin >> stickPayment;
-
+//check if they entered enough money
     if (stickPayment < totalWTax){
       cout << "\nInsufficient Amount" << endl;
     }  
   }
-
+//output and calculate change
   cout << "\nYour change is " << stickPayment - totalWTax << endl;
 
   cout << "THANKS FOR SHOPPING AT OSCARS STICK STORE" << endl;
-  
+  //ask user to enter store
   cout << "Enter any key to exit the store: ";
   cin >> stickExit;
-
+//clear screen
   int systemRet = system("clear");
   if (systemRet == -1) {
     cout << "There is an error with system" << endl;
