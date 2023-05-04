@@ -2,6 +2,7 @@
  * @file Balls.h
  * @author Ethan Zhou
  * @for: Ms.Wun
+ * @class: ICS3U1
  * @brief: Header file for the logic of the shop "Ethan's Balls"
  * @date: 2023-05-04
 */
