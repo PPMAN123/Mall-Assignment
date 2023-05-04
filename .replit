@@ -1,4 +1,4 @@
-run = "cowsay Configure me!"
+run = "c++ ToddlerMallerMallA4Code.cpp"
 
 [nix]
 channel = "stable-22_11"

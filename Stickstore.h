@@ -127,6 +127,6 @@ void stickStore(){
   cout << "Enter any key to exit the store";
   cin >> stickExit;
 
-  system("CLS");
+  
   
 }
