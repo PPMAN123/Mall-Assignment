@@ -10,20 +10,29 @@
 #include <iostream>
 #include "Balls.h"
 #include "Stickstore.h"
+#include "Stickstore.h"
 
 
 using namespace std;
 
+void directoryOut(){
+  cout << "\nWelcome to the Toddler Maller Mall!" << endl;
+      cout << "\nDirectory: " << endl;
+      cout << "1) Ethans Ball Store" << endl;
+      cout << "2) Oscars Stick Store" << endl;
+      cout << "3) Rahbabs Goals and Holes Store" << endl;
+      cout << "4) Exit The Mall" << endl;
+}
 
 int main(){
-  int inMall = 0;
+  bool inMall = true;
   int storeChoice = 0;
-  while (inMall == 0){
+  while (inMall == true){
     cout << "Welcome to the Toddler Maller Mall!" << endl;
     cout << "\nDirectory: " << endl;
     cout << "1) Ethans Ball Store" << endl;
     cout << "2) Oscars Stick Store" << endl;
-    cout << "3) Rahbabs Hole Store" << endl;
+    cout << "3) Rahbabs Goals and Holes Store" << endl;
     cout << "4) Exit The Mall" << endl;
 
     while (storeChoice == 0){
@@ -33,7 +42,29 @@ int main(){
         storeChoice = 0;
         cout << "Invalid Choice, Try Again" << endl;
       }
+
+    if (storeChoice == 1){
+      cout << "Balls" << endl;
+      directoryOut();
+      storeChoice = 0;
+      
+    } else if (storeChoice == 2){
+      stickStore();
+      directoryOut();
+      storeChoice = 0;
+      
+    } else if (storeChoice == 3){
+      cout << "Holes" << endl;
+      directoryOut();
+      storeChoice = 0;
+      
+    } else if (storeChoice == 4){
+      cout << "You have exited the Mall";
+      directoryOut();
+      inMall = false;
+    }
       
     }
   }
+  
 }
