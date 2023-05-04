@@ -59,7 +59,6 @@ int main(){
       
     } else if (storeChoice == 4){
       cout << "You have exited the Mall";
-      directoryOut();
       inMall = false;
     }
     }
