@@ -7,6 +7,7 @@
  * @date: 2023-05-04
 */
 
+//include header files
 #include <iostream>
 #include <unordered_map>
 #include <string>
@@ -223,6 +224,7 @@ void ballsStore(){
   cout << "\nPress any key to leave the store: ";
   cin >> keyToLeaveStore;
 
+  //error trapping the system clear in case it fails
   int systemRet = system("clear");
   if (systemRet == -1) {
     cout << "There is an error with system" << endl;

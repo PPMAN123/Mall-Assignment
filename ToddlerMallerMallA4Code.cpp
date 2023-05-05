@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include "Balls.h"
 #include "Stickstore.h"
+#include "GoalsAndHoles.h"
 
 using namespace std;
 
@@ -43,7 +44,7 @@ int main(){
       }
 
     if (storeChoice == 1){
-      cout << "Balls" << endl;
+      ballsStore();
       directoryOut();
       storeChoice = 0;
       
@@ -53,12 +54,12 @@ int main(){
       storeChoice = 0;
       
     } else if (storeChoice == 3){
-      cout << "Holes" << endl;
+      holesStore();
       directoryOut();
       storeChoice = 0;
       
     } else if (storeChoice == 4){
-      cout << "You have exited the Mall";
+      cout << "You have exited the Mall" << endl;
       inMall = false;
     }
     }
