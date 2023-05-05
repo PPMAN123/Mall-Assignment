@@ -76,7 +76,20 @@ void stickStore(){
     //if the user enters c then exit the loop
       if (stickConfirm == 'C' or stickConfirm == 'c'){
         stickSentinel = 0;
+        
       } else{
+        cout << endl; 
+        cout << "> Kids Hockey Stick     $99.99" << endl;
+        cout << "> Kids Baseball Bat     $69.99" << endl;
+        cout << "> Kids Badminton Racket $49.99" << endl;
+        cout << "> Kids Lacrosse Stick   $54.99" << endl;
+        cout << "> Kids Cricket Bat      $79.99" << endl;
+
+        hockeyCount = 0;
+        baseballCount = 0;
+        badmintonCount = 0;
+        lacrosseCount = 0;
+        cricketCount = 0;
         //if they dont enter c then go back to ask the user for input
         stickSentinel = 1;
       }
